@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <title>پاسخ‌های دانش‌آموز</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Vazirmatn&display=swap');
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Vazirmatn', sans-serif;
+      background-color: #f4f8fc;
+      color: #333;
+      padding: 40px 20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 900px;
+      background-color: #fff;
+      padding: 40px;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    h2 {
+      text-align: center;
+      color: #0072ff;
+      margin-bottom: 40px;
+      font-size: 24px;
+      font-weight: bold;
+    }
+
+    .answer-box {
+      background-color: #fff;
+      padding: 20px;
+      margin-bottom: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+      line-height: 1.8;
+      transition: all 0.3s ease;
+    }
+
+    .answer-box:hover {
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
+    }
+
+    .buttons {
+      display: flex;
+      justify-content: space-between;
+      gap: 15px;
+      margin-top: 40px;
+    }
+
+    .buttons a {
+      padding: 14px 28px;
+      background-color: #0072ff;
+      color: white;
+      border-radius: 10px;
+      text-decoration: none;
+      font-weight: bold;
+      text-align: center;
+      flex: 1;
+      transition: background-color 0.3s ease, transform 0.2s ease;
+    }
+
+    .buttons a:hover {
+      background-color: #005fcc;
+      transform: translateY(-3px);
+    }
+
+    .buttons a:last-child {
+      background-color: #ff6f61;
+      flex: 1;
+    }
+
+    .buttons a:last-child:hover {
+      background-color: #e65f4f;
+    }
+
+    @media (max-width: 768px) {
+      .buttons {
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      .buttons a {
+        width: 100%;
+      }
+    }
+
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>سؤالات</h2>
+    {% for z in y %}
+      <div class="answer-box">
+        <strong>سؤال {{ forloop.counter }}:</strong> {{ z.text_q }} — نمره: {{ z.q_grade }}
+      </div>
+    {% endfor %}
+
+    <h2>پاسخ‌های دانش‌آموز</h2>
+    {% for p in x %}
+      <div class="answer-box">
+        <strong>جواب سؤال {{ forloop.counter }}:</strong> {{ p.text_an }}
+      </div>
+    {% endfor %}
+
+    <div class="buttons">
+      <a href="javascript:history.back()">بازگشت به صفحه قبل</a>
+      <a href="http://127.0.0.1:8000/maindashtea/">بازگشت به داشبورد</a>
+      <a href="http://127.0.0.1:8000/setmark/{{ stu }}/{{ lesson }}">وارد کردن نمره</a>
+    </div>
+  </div>
+</body>
+</html>

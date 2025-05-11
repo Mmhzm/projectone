@@ -1,0 +1,81 @@
+<!-- <form method="POST" >{% csrf_token %}
+    {{ form }}
+    <input type="submit" value="ثبت"/>
+</form> -->
+
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <title>فرم ثبت اطلاعات</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Vazirmatn&display=swap');
+
+    body {
+      font-family: 'Vazirmatn', sans-serif;
+      background: #f0f4f8;
+      margin: 0;
+      padding: 40px 20px;
+      color: #333;
+    }
+
+    .form-container {
+      max-width: 600px;
+      margin: 0 auto;
+      background: #fff;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    h2 {
+      text-align: center;
+      color: #0072ff;
+      margin-bottom: 25px;
+    }
+
+    form input[type="text"],
+    form input[type="number"],
+    form input[type="email"],
+    form select,
+    form textarea {
+      width: 95%;
+      padding: 10px;
+      margin-top: 10px;
+      margin-bottom: 15px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      font-size: 14px;
+    }
+
+    input[type="submit"] {
+      background-color: #0072ff;
+      color: white;
+      padding: 12px 24px;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background 0.3s;
+      display: block;
+      margin: 0 auto;
+    }
+
+    input[type="submit"]:hover {
+      background-color: #005fcc;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="form-container">
+    <h2>ثبت اطلاعات</h2>
+    <form method="POST">
+      {% csrf_token %}
+      {{ form }}
+      <input type="submit" value="ثبت"/>
+    </form>
+  </div>
+
+</body>
+</html>

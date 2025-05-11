@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <title>آزمون</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Vazirmatn&display=swap');
+
+    body {
+      font-family: 'Vazirmatn', sans-serif;
+      background: #f0f4f8;
+      margin: 0;
+      padding: 20px;
+      color: #333;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      background: #fff;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    #timer-box {
+      background-color: #0072ff;
+      color: white;
+      padding: 12px;
+      text-align: center;
+      border-radius: 8px;
+      font-size: 18px;
+      margin-bottom: 30px;
+    }
+
+    .question-box {
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      padding: 20px;
+      margin-bottom: 20px;
+      background: #fafafa;
+    }
+
+    .question-box p {
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+
+    textarea {
+      width: 100%;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      padding: 10px;
+      font-size: 15px;
+      resize: vertical;
+    }
+
+    button[type="submit"] {
+      background-color: #0072ff;
+      color: white;
+      border: none;
+      padding: 12px 24px;
+      font-size: 16px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.3s;
+      display: block;
+      margin: 30px auto 0;
+    }
+
+    button[type="submit"]:hover {
+      background-color: #005fcc;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <div id="timer-box">
+      ⏰ زمان باقی‌مانده: <span id="timer"></span>
+    </div>
+
+    <form method="post" id="exam-form">
+      {% csrf_token %}
+      {% for q in questions %}
+        <div class="question-box">
+          <p>سؤال {{ forloop.counter }}: {{ q.text_q }}</p>
+          <textarea name="answer_{{ q.q_id }}" rows="4" placeholder="پاسخ خود را وارد کنید..."></textarea>
+        </div>
+      {% endfor %}
+      <button type="submit">ارسال پاسخ‌ها</button>
+    </form>
+  </div>
+
+  <script>
+    let timeLeft = {{ time_limit }} * 60;  // دقیقه به ثانیه
+    const timerEl = document.getElementById('timer');
+    const form = document.getElementById('exam-form');
+
+    function updateTimer() {
+      const minutes = Math.floor(timeLeft / 60);
+      const seconds = timeLeft % 60;
+      timerEl.textContent = `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+      timeLeft--;
+
+      if (timeLeft < 0) {
+        clearInterval(timerInterval);
+        alert("⏳ زمان آزمون به پایان رسید. پاسخ‌ها ارسال می‌شوند.");
+        form.submit();
+      }
+    }
+
+    const timerInterval = setInterval(updateTimer, 1000);
+    updateTimer();
+  </script>
+
+</body>
+</html>

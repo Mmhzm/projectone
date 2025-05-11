@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <title>لیست دروس  </title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Vazirmatn&display=swap');
+
+    body {
+      font-family: 'Vazirmatn', sans-serif;
+      background: #f5f7fa;
+      margin: 0;
+      padding: 40px 20px 80px;
+    }
+
+    h1 {
+      text-align: center;
+      color: #333;
+      margin-bottom: 40px;
+    }
+
+    .courses-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .course-card {
+      background-color: white;
+      border-radius: 12px;
+      padding: 20px;
+      text-align: center;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      transition: transform 0.2s, box-shadow 0.2s;
+      text-decoration: none;
+      color: #0072ff;
+      font-weight: bold;
+      font-size: 18px;
+    }
+
+    .course-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    }
+
+    .back-btn {
+      display: block;
+      text-align: center;
+      margin: 60px auto 0;
+      background-color: #0072ff;
+      color: white;
+      text-decoration: none;
+      padding: 14px 30px;
+      border-radius: 10px;
+      font-size: 16px;
+      font-weight: bold;
+      width: fit-content;
+      transition: background 0.3s ease;
+    }
+
+    .back-btn:hover {
+      background-color: #005fcc;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>لیست دروس شما</h1>
+
+  <div class="courses-container">
+    {% for x in tea_id %}
+      <a href="http://127.0.0.1:8000/detaillesson/{{ x }}/" class="course-card">{{ x }}</a>
+    {% endfor %}
+  </div>
+
+  <a href="http://127.0.0.1:8000/maindashtea/" class="back-btn">بازگشت به داشبورد</a>
+
+</body>
+</html>

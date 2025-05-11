@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <title>لیست دانش‌آموزان</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Vazirmatn&display=swap');
+
+    body {
+      font-family: 'Vazirmatn', sans-serif;
+      background: #f0f4f8;
+      margin: 0;
+      padding: 40px 20px;
+      color: #333;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      background: #fff;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    h2 {
+      text-align: center;
+      color: #0072ff;
+      margin-bottom: 30px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+
+    th, td {
+      padding: 12px 16px;
+      border-bottom: 1px solid #ddd;
+      text-align: center;
+    }
+
+    th {
+      background-color: #0072ff;
+      color: white;
+    }
+
+    tr:hover {
+      background-color: #f1f1f1;
+    }
+
+    .buttons {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin-top: 30px;
+    }
+
+    .btn {
+      background-color: #0072ff;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 8px;
+      text-decoration: none;
+      transition: background 0.3s;
+      font-size: 16px;
+    }
+
+    .btn:hover {
+      background-color: #005fcc;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h2>لیست دانش‌آموزان</h2>
+
+    <table>
+      <thead>
+        <tr>
+          <th>کد ملی</th>
+          <th>شماره دانش‌آموزی</th>
+          <th>نام</th>
+          <th>نام خانوادگی</th>
+          <th>نمره</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for p in x %}
+          <tr>
+            <td>{{ p.national_id }}</td>
+            <td>{{ p.stu_number }}</td>
+            <td>{{ p.name }}</td>
+            <td>{{ p.family }}</td>
+            <td><a href="http://127.0.0.1:8000/showansware/{{ p.stu_number }}/{{ lesson }}/">کلیک کنید</a></td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+
+    <div class="buttons">
+      <a href="http://127.0.0.1:8000/maindashtea/" class="btn">بازگشت به داشبورد</a>
+      <a href="javascript:history.back()" class="btn">بازگشت به صفحه قبل</a>
+    </div>
+  </div>
+
+</body>
+</html>
