@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
@@ -99,7 +100,8 @@
 
     <div class="buttons">
       <a href="javascript:history.back()">بازگشت به صفحه قبل</a>
-      <a href="http://127.0.0.1:8000/maindashtea/">بازگشت به داشبورد</a>
+      <a href="{% url 'maindashboardtea' %}">بازگشت به داشبورد</a>
+      
     </div>
   </div>
 </body>

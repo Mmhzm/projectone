@@ -295,28 +295,7 @@ def signintea(request):
 
 
 
-# @csrf_exempt
-# def Write_question(request,pk):
-#     if request.method == 'GET':
-#         temp_one = Lesson.objects.get(name = pk)
-#         if temp_one:
-#             link_l = f'http://127.0.0.1:8000/addquestion/{pk}/'
-#             temp_two = Exam.objects.get(exam_name = temp_one)
-#             forms = Writeq_e()
-#             context={'test' : range(int(temp_two.num_q)),'form':forms,'link_l': link_l}
-#             return render(request,'writeq.html',context)
-#         else:
-#             return HttpResponse("dont find lesson")
-#     elif request.method == 'POST':
-#         forms = Writeq_e(request.POST)
-#         if forms.is_valid():
-#             forms.save()
-#             return HttpResponse('form save :):):):)')
-#         else:
-#             return HttpResponse('no this form isnt valid!!')
-#     else:
-#         return HttpResponse('this is nothing!!!')
-    
+
 #show lessons for a tea
 def dashboardtea(request):
     list1=[]

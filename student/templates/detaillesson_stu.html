@@ -70,11 +70,10 @@
     <p class="info">تعداد سوالات: {{ lesson_d.num_q}} </p>
     <p class="info">نمره: {{G.grade}}</p>
     <div class="buttons">
-      <!-- <a href="http://127.0.0.1:8000/editexam/{{ lesson_d.name }}/">ایجاد تغییرات درس</a> -->
-      <!-- <a href="http://127.0.0.1:8000/makeexex/{{ lesson_d.name }}/">ایجاد امتحان</a> -->
-      <a href="http://127.0.0.1:8000/exam/{{lesson_d.name}}/{{stu}}/{{lesson_d.ex_time}}">شروع امتحان</a>
-      <a href="http://127.0.0.1:8000/lessonstu/">بازگشت به صفحه قبل</a>
-      <a href="http://127.0.0.1:8000/">بازگشت به داشبورد</a>
+     
+      <a href="{% url 'exam' lesson_d.name stu lesson_d.ex_time %}">شروع امتحان</a>
+      <a href="{% url 'lessonstu' %}">بازگشت به صفحه قبل</a>
+      <a href="{% url 'main' %}">بازگشت به داشبورد</a>
     </div>
   </div>
 

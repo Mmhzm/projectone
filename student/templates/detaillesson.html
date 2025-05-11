@@ -69,12 +69,13 @@
     <p class="info">مدت زمان امتحان:  {{ lesson_d.ex_time }}</p>
     <p class="info">تعداد سوالات: {{ lesson_d.num_q}} </p>
     <div class="buttons">
-      <a href="http://127.0.0.1:8000/editexam/{{ lesson_d.name }}/">ایجاد تغییرات درس</a>
-      <a href="http://127.0.0.1:8000/makeexex/{{ lesson_d.name }}/">ایجاد امتحان</a>
-      <a href="http://127.0.0.1:8000/lessontea/">بازگشت به صفحه قبل</a>
-      <a href="http://127.0.0.1:8000/">بازگشت به داشبورد</a>
+      <a href="{% url 'edit' lesson_d.name %}">ایجاد تغییرات درس</a>
+      <a href="{% url 'makeexam' lesson_d.name %}">ایجاد امتحان</a>
+      <a href="{% url 'leessontea' %}">بازگشت به صفحه قبل</a>
+      <a href="{% url 'main' %}">بازگشت به داشبورد</a>
     </div>
   </div>
+
 
 </body>
 </html>

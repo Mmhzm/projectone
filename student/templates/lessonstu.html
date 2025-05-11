@@ -71,11 +71,11 @@
 
   <div class="courses-container">
     {% for x in stu_id %}
-      <a href="http://127.0.0.1:8000/detaillesson_stu/{{ x }}/" class="course-card">{{ x }}</a>
+      <a href="{% url 'detail_stu' x %}" class="course-card">{{ x }}</a>
     {% endfor %}
   </div>
 
-  <a href="http://127.0.0.1:8000/" class="back-btn">بازگشت به داشبورد</a>
+  <a href="{% url 'maindashboardstu' %}" class="back-btn">بازگشت به داشبورد</a>
 
 </body>
 </html>
